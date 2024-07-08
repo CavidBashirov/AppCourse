@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.DTOs.Admin.Cities;
+using Service.Helpers.Exceptions;
 using Service.Services.Interfaces;
 
 namespace App.Controllers.Admin
 {
+    [Authorize(Policy = "RequireAdminRole")]
     public class CityController : BaseController
     {
         private readonly ICityService _cityService;
@@ -16,6 +19,12 @@ namespace App.Controllers.Admin
             _cityService = cityService;
             _logger = logger;
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPaginateDatas([FromQuery] int page = 1, [FromQuery] int take = 2)
+        {
+            return Ok(await _cityService.GetPaginateDatasAsync(page, take));
         }
 
         [HttpGet]

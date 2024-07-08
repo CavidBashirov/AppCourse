@@ -61,10 +61,5 @@ namespace Repository.Repositories
         {
             return _entities.AsQueryable();
         }
-
-        public IQueryable<T> GetAllTest()
-        {
-            return _entities.AsQueryable();
-        }
     }
 }

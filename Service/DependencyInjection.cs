@@ -1,17 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Repository.Repositories.Interfaces;
-using Repository.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using Service.DTOs.Admin.Countries;
 using Service.Helpers;
 using Service.Services.Interfaces;
 using Service.Services;
+using Service.DTOs.Account;
 
 namespace Service
 {
@@ -27,6 +21,7 @@ namespace Service
             });
 
             services.AddScoped<IValidator<CountryCreateDto>, CountryCreateDtoValidator>();
+            services.AddScoped<IValidator<RegisterDto>, RegisterDtoValidator>();
 
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICityService, CityService>();
@@ -35,6 +30,11 @@ namespace Service
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAuthorService, AuthorService>();
+            
+
             return services;
         }
     }

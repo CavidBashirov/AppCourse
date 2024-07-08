@@ -51,6 +51,7 @@ namespace App.Middlewares
 
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
                     errorResponse.Message = ex.Message;
+
                     break;
 
                 case NotFoundException ex:

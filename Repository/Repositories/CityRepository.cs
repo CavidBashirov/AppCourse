@@ -39,5 +39,10 @@ namespace Repository.Repositories
             
             return await query.ToListAsync();
         }
+
+        public async Task<IEnumerable<City>> GetPaginateDatasAsync(int page, int take)
+        {
+            return await _entities.Skip((page - 1) * take).Take(take).ToListAsync();
+        }
     }
 }

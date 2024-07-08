@@ -18,6 +18,9 @@ namespace Repository
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IGroupTeacherRepository, GroupTeacherRepository>();
             services.AddScoped<IGroupStudentRepository, GroupStudentRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            
             return services;
         }
     }

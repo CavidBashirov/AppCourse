@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Entities;
+using Service.DTOs.Account;
+using Service.DTOs.Admin.Authors;
+using Service.DTOs.Admin.Books;
 using Service.DTOs.Admin.Cities;
 using Service.DTOs.Admin.Countries;
 using Service.DTOs.Admin.Educations;
@@ -68,8 +71,14 @@ namespace Service.Helpers
             CreateMap<Student, StudentDto>()
                 .ForMember(dest => dest.Groups, opt => opt.MapFrom(m => m.GroupStudents.Select(m => m.Group.Name)));
 
+            CreateMap<RegisterDto, AppUser>();
+            CreateMap<AppUser, UserDto>();
 
+            CreateMap<Book, BookDto>();
 
+            CreateMap<AuthorCreateDto, Author>();
+            CreateMap<Author, AuthorDto>();
+            CreateMap<AuthorEditDto, Author>();
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Repository.Repositories.Interfaces
     {
         Task<IEnumerable<City>> GetAllWithCountryAsync();
         Task<IEnumerable<City>> FilterAsync(string name, string countryName);
+        Task<IEnumerable<City>> GetPaginateDatasAsync(int page, int take);
     }
 }
